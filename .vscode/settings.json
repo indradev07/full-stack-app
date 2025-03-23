@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": [
+        "demo/src/main/java/com/example/demo",
+        "backend1/src/main/java",
+        "backend/src/main/java"
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
+}
