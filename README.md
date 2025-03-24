@@ -103,7 +103,7 @@ The backend exposes the following RESTful APIs:
 
 - Fetch a specific TV show by ID : GET /api/tvshows/{id} 
 
-- Example Response for 
+#Example Response for 
 
 GET /api/tvshows
 
