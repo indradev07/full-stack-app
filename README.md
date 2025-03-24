@@ -1,4 +1,4 @@
-TV Shows App
+📺 TV Shows App
 
 A full-stack web application for managing TV shows, featuring a React frontend and a Spring Boot backend with an H2 database.
 
@@ -8,30 +8,29 @@ The TV Shows App allows users to fetch, store, and manage TV show data. It integ
 
 🚀 Features
 
-✅ Fetch TV show data from an external API✅ Store TV show details in a database✅ Expose RESTful APIs for TV show management✅ Serve frontend with Vite for fast development✅ Dockerized setup for easy deployment
+✅ Fetch TV show data from an external API
+✅ Store TV show details in a database
+✅ Expose RESTful APIs for TV show management
+✅ Serve frontend with Vite for fast development
+✅ Dockerized setup for easy deployment
 
 🏗️ Tech Stack
 
 Frontend:
 
 React (Vite) – Fast development and optimized build
-
 Tailwind CSS – Modern styling framework
-
 React Context API – State management
 
 Backend:
 
 Spring Boot – REST API and business logic
-
 H2 Database – Lightweight, in-memory database
-
 Lombok – Reduces boilerplate code
 
 Build & Deployment:
 
 Maven – Backend build tool
-
 Docker & Docker Compose – Containerized setup
 
 🏁 Getting Started
@@ -41,7 +40,6 @@ Docker & Docker Compose – Containerized setup
 Ensure you have the following installed:
 
 Docker
-
 Docker Compose
 
 🔹 Clone the Repository
@@ -70,11 +68,9 @@ Feature
 URL
 
 Frontend (React Vite)
-
-http://localhost:5173
+http://localhost:80
 
 Backend API (Spring Boot)
-
 http://localhost:8080/api/tvshows
 
 H2 Database Console
