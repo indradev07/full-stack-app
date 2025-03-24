@@ -25,25 +25,25 @@ The TV Shows App allows users to fetch, store, and manage TV show data. It integ
 
 Frontend:
 
-React (Vite) – Fast development and optimized build
+- React (Vite) – Fast development and optimized build
 
-Tailwind CSS – Modern styling framework 
+- Tailwind CSS – Modern styling framework 
 
-React Context API – State management
+- React Context API – State management
 
 Backend:
 
-Spring Boot – REST API and business logic 
+- Spring Boot – REST API and business logic 
 
-H2 Database – Lightweight, in-memory database 
+- H2 Database – Lightweight, in-memory database 
 
-Lombok – Reduces boilerplate code
+- Lombok – Reduces boilerplate code
 
 Build & Deployment:
 
-Maven – Backend build tool 
+- Maven – Backend build tool 
 
-Docker & Docker Compose – Containerized setup
+- Docker & Docker Compose – Containerized setup
 
 🏁 Getting Started
 
@@ -70,6 +70,7 @@ This will build and start both the backend and frontend services.
 📂 Project Structure
 
 /tv-shows-app 
+
 │── backend # Spring Boot Backend
 
 │── frontend # React Vite Frontend
@@ -80,19 +81,19 @@ This will build and start both the backend and frontend services.
 
 🔗 Access Your App
 
-Frontend (React Vite) http://localhost:80
+- Frontend (React Vite) http://localhost:80
 
-Backend API (Spring Boot) http://localhost:8080/api/tvshows
+- Backend API (Spring Boot) http://localhost:8080/api/tvshows
 
-H2 Database Console http://localhost:8080/h2-console
+- H2 Database Console http://localhost:8080/h2-console
 
 🔹 H2 Console Credentials
 
-JDBC URL: jdbc:h2:file:/data/tvshowsdb 
+- JDBC URL: jdbc:h2:file:/data/tvshowsdb 
 
-Username: sa 
+- Username: sa 
 
-Password: (leave blank)
+- Password: (leave blank)
 
 📡 API Documentation
 
