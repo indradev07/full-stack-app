@@ -1,64 +1,144 @@
-TV Shows Management App 🎬
+📺 TV Shows App
 
-This project is a Full Stack Application that fetches TV show details from the TVMaze API and provides a RESTful API to manage TV shows. The frontend is built with React (Vite), and the backend is a Spring Boot (Java 17) application using an H2 in-memory database.
+A full-stack web application for managing TV shows, featuring a React frontend and a Spring Boot backend with an H2 database.
 
-The entire project is Dockerized, so it can be easily run using Docker Compose.
+
+📖 Project Overview
+
+The TV Shows App allows users to fetch, store, and manage TV show data. It integrates with an external API, provides a RESTful backend, and serves a modern frontend built with React and Vite. The application is containerized using Docker for seamless deployment.
+
 
 🚀 Features
 
-✔ Fetches TV show details from TVMaze API and stores them in the database
-✔ RESTful APIs for retrieving TV show information
-✔ Frontend displays TV show details in a user-friendly interface
-✔ Uses H2 Database for easy setup (no external DB required)
-✔ Dockerized for easy deployment
+✅ Fetch TV show data from an external API
 
-🏗 Project Structure
+✅ Store TV show details in a database
 
-/tvshows-app
-│── backend/       # Spring Boot Application (Java 17, H2 Database)
-│── frontend/      # React (Vite) Application
-│── docker-compose.yml   # Docker setup for both frontend & backend
-│── README.md      # Project Documentation
+✅ Expose RESTful APIs for TV show management
 
-🛠 Tech Stack
+✅ Serve frontend with Vite for fast development
 
-Backend (Spring Boot)
-Java 17
-Spring Boot 3
-Spring Data JPA
-H2 Database
-RestTemplate for API calls
-Lombok for reducing boilerplate code
-Docker
+✅ Dockerized setup for easy deployment
 
-Frontend (React + Vite)
-React 18
-Vite for fast build
-Tailwind CSS for styling
-Axios for API requests
-Docker
 
-⚡ Setup Instructions
+🏗️ Tech Stack
+
+Frontend:
+
+- React (Vite) – Fast development and optimized build
+
+- Tailwind CSS – Modern styling framework 
+
+- React Context API – State management
+
+Backend:
+
+- Spring Boot – REST API and business logic 
+
+- H2 Database – Lightweight, in-memory database 
+
+- Lombok – Reduces boilerplate code
+
+Build & Deployment:
+
+- Maven – Backend build tool 
+
+- Docker & Docker Compose – Containerized setup
+
+🏁 Getting Started
+
+🔹 Prerequisites
+
+Ensure you have the following installed:
+
+Docker 
+
+Docker Compose
 
 🔹 Clone the Repository
-git clone https://github.com/indradev07/full-stack-app.git
-cd tvshows-app
 
-🔹 Run with Docker
+git clone https://github.com/indradev07/full-stack-app.git 
+
+cd full-stack-app
+
+🔹 Run the Application with Docker
+
 docker-compose up --build
 
-This will:
-✅ Build and start the backend (Spring Boot) on port 8080
-✅ Build and start the frontend (React) on port 5173
+This will build and start both the backend and frontend services.
 
-📡 Backend API Endpoints
+📂 Project Structure
 
+/tv-shows-app 
 
-Method	Endpoint	Description
-GET	/api/tvshows	Get all TV shows
-GET	/api/tvshows/{id}	Get TV show by ID
+│── backend # Spring Boot Backend
 
+│── frontend # React Vite Frontend
 
-👨‍💻 Contributors
+│── docker-compose.yml
 
-Indra Pal
+│── README.md
+
+🔗 Access Your App
+
+- Frontend (React Vite) http://localhost:80
+
+- Backend API (Spring Boot) http://localhost:8080/api/tvshows
+
+- H2 Database Console http://localhost:8080/h2-console
+
+🔹 H2 Console Credentials
+
+- JDBC URL: jdbc:h2:file:/data/tvshowsdb 
+
+- Username: sa 
+
+- Password: (leave blank)
+
+📡 API Documentation
+
+The backend exposes the following RESTful APIs:
+
+- Fetch all TV shows : GET /api/tvshows 
+
+- Fetch a specific TV show by ID : GET /api/tvshows/{id} 
+
+- Example Response for 
+
+GET /api/tvshows
+
+[ { "id": 1, "title": "Breaking Bad", "genre": "Drama", "rating": 9.5 } ]
+
+🛠️ Running Without Docker
+
+If you want to run the application manually for development:
+
+🔹 Run Backend
+
+cd backend 
+
+mvn spring-boot:run
+
+🔹 Run Frontend
+
+cd frontend 
+
+npm install 
+
+npm run dev
+
+🧪 Running Tests
+
+To ensure everything is working as expected, run:
+
+- Backend Tests
+
+cd backend 
+
+mvn test
+
+- Frontend Tests
+
+cd frontend 
+
+npm test

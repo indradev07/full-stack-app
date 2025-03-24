@@ -1,20 +1,22 @@
-# Use an official OpenJDK runtime as a parent image
-FROM eclipse-temurin:17-jdk
-
-# Set working directory
+# Stage 1: Build the JAR using Maven
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy the project source files
-COPY . .
+COPY pom.xml .
+RUN mvn clean package -DskipTests || true  # Pre-download dependencies
 
-# Build the Spring Boot application inside the container
-RUN ./mvnw clean package -DskipTests
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the built JAR file
-RUN cp target/*.jar app.jar
+# Stage 2: Create a minimal runtime image
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
 
-# Expose the application port
+COPY --from=build /app/target/*.jar app.jar
+
+# Ensure resources are available (if needed outside the JAR)
+COPY src/main/resources/tvtitles.txt /app/resources/tvtitles.txt
+COPY src/main/resources/tvshows_backup.json /app/resources/tvshows_backup.json
+
 EXPOSE 8080
-
-# Run the application
 CMD ["java", "-jar", "app.jar"]

@@ -16,28 +16,23 @@ public class GlobalExceptionHandler {
 
     @SuppressWarnings("rawtypes")
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ApiResponse> handleTvShowNotFoundException(ResourceNotFoundException ex) {
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ApiResponse> handleResourceNotFound(ResourceNotFoundException ex) {
         log.error("TV Show not found: {}", ex.getMessage());
-        ApiResponse errorResponse = new ApiResponse(
-                "Not Found",
-                ex.getMessage(),
-                LocalDateTime.now(),
-                HttpStatus.NOT_FOUND.value()
-        );
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return buildResponse(ex.getMessage(), "Not Found", HttpStatus.NOT_FOUND);
     }
-
 
     @SuppressWarnings("rawtypes")
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ApiResponse> handleGlobalException(Exception ex) {
-        ApiResponse errorResponse = new ApiResponse(
-                "Internal Server Error",
-                "Something went wrong. Please try again later.",
-                LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value()
-        );
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        log.error("Unhandled exception: {}", ex.getMessage(), ex);
+        return buildResponse("Something went wrong. Please try again later.", "Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private ResponseEntity<ApiResponse> buildResponse(String message, String error, HttpStatus status) {
+        ApiResponse<?> response = new ApiResponse<>(error, message, LocalDateTime.now(), status.value());
+        return new ResponseEntity<>(response, status);
     }
 }

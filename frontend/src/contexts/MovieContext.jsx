@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext, useEffect, useCallback } from "react";
 
 const MovieContext = createContext();
 
@@ -11,10 +11,8 @@ export const MovieProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        if (favorites.length > 0) { 
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-        }
-    }, [favorites]);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites.length]);
 
     const addToFavorites = (show) => {
         setFavorites(prev => [...prev, show]);
@@ -24,9 +22,8 @@ export const MovieProvider = ({ children }) => {
         setFavorites(prev => prev.filter(show => show.id !== showId));
     };
 
-    const isFavorite = (showId) => {
-        return favorites.some(show => show.id === showId);
-    };
+    const isFavorite = useCallback((showId) => favorites.some(show => show.id === showId), [favorites]);
+
 
     return (
         <MovieContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, isFavorite }}>

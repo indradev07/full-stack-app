@@ -1,18 +1,18 @@
-# Use Node.js as base image
-FROM node:18-alpine
+# Use Node.js for building the frontend
+FROM node:18-alpine as build
 
-# Set working directory
 WORKDIR /app
-
-# Copy package.json and install dependencies
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --frozen-lockfile
 
-# Copy the rest of the application
+# Copy the rest of the app and build it
 COPY . .
+RUN npm run build
 
-# Expose frontend port
-EXPOSE 5173
+# Serve the app using Nginx
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
-# Start the frontend
-CMD ["npm", "run", "dev"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

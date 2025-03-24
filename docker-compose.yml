@@ -1,18 +1,19 @@
-version: "3.8"
+version: '3.8'
 
 services:
   backend:
     build: ./backend
     ports:
       - "8080:8080"
+    volumes:
+      - ./backend/src/main/resources/tvtitles.txt:/app/src/main/resources/tvtitles.txt
+      - ./h2-data:/data
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
-    restart: always
+      - SPRING_PROFILES_ACTIVE=docker
 
   frontend:
     build: ./frontend
     ports:
-      - "5173:5173"
+      - "80:80"
     depends_on:
       - backend
-    restart: always

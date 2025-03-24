@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 @Entity
 @Getter
 @Setter
@@ -11,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table(name = "tv_shows")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class TvShow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +24,7 @@ public class TvShow {
     private String image;
     private String language;
     
-    @Column(columnDefinition = "TEXT") 
+    @Column(columnDefinition = "TEXT")
     private String summary;
 
     private String webChannel;
@@ -29,7 +32,9 @@ public class TvShow {
     private String status;
     private String showType;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "tv_show_genres", joinColumns = @JoinColumn(name = "tv_show_id"))
+    @Column(name = "genre")
     private List<String> genres;
 
     private String episodesOrdered;
