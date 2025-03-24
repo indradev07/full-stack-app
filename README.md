@@ -9,9 +9,13 @@ The TV Shows App allows users to fetch, store, and manage TV show data. It integ
 🚀 Features
 
 ✅ Fetch TV show data from an external API
+
 ✅ Store TV show details in a database
+
 ✅ Expose RESTful APIs for TV show management
+
 ✅ Serve frontend with Vite for fast development
+
 ✅ Dockerized setup for easy deployment
 
 🏗️ Tech Stack
@@ -57,15 +61,14 @@ This will build and start both the backend and frontend services.
 
 /tv-shows-app
 │── backend  # Spring Boot Backend
+
 │── frontend # React Vite Frontend
+
 │── docker-compose.yml
+
 │── README.md
 
 🔗 Access Your App
-
-Feature
-
-URL
 
 Frontend (React Vite)
 http://localhost:80
@@ -74,38 +77,23 @@ Backend API (Spring Boot)
 http://localhost:8080/api/tvshows
 
 H2 Database Console
-
 http://localhost:8080/h2-console
 
 🔹 H2 Console Credentials
 
 JDBC URL: jdbc:h2:file:/data/tvshowsdb
-
 Username: sa
-
 Password: (leave blank)
 
 📡 API Documentation
 
 The backend exposes the following RESTful APIs:
 
-Method
+Method GET /api/tvshows 
+(Fetch all TV shows)
 
-Endpoint
-
-Description
-
-GET
-
-/api/tvshows
-
-Fetch all TV shows
-
-GET
-
-/api/tvshows/{id}
-
-Fetch a specific TV show by ID
+GET /api/tvshows/{id}
+(Fetch a specific TV show by ID)
 
 Example Response for GET /api/tvshows:
 
