@@ -18,7 +18,7 @@ The TV Shows App allows users to fetch, store, and manage TV show data. It integ
 
 Frontend:
 
-React (Vite) – Fast development and optimized build 
+React (Vite) – Fast development and optimized build
 Tailwind CSS – Modern styling framework 
 React Context API – State management
 
